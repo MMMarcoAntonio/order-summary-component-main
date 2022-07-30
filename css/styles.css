@@ -1,0 +1,184 @@
+:root {
+  --pale-blue: hsl(225, 100%, 94%);
+  --bright-blue: hsl(245, 75%, 52%);
+
+  --very-pale-blue: hsl(225, 100%, 98%);
+  --desaturated-blue: hsl(224, 23%, 55%);
+  --dark-blue: hsl(223, 47%, 23%);
+  --white: hsl(360, 100%, 100%);
+
+  --primary-color-100: var(--pale-blue);
+  --primary-color-200: var(--bright-blue);
+
+  --neutral-color-100: var(--white);
+  --neutral-color-200: var(--very-pale-blue);
+  --neutral-color-300: var(--desaturated-blue);
+  --neutral-color-400: var(--dark-blue);
+
+  --color-hover: 245 75% 52%;
+
+  --font-weight-500: 500;
+  --font-weight-700: 700;
+  --font-weight-900: 900;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+main {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+body {
+  background-color: var(--primary-color-100);
+  margin: 0;
+  font-size: 1.6rem;
+  font-family: "Red Hat Display", sans-serif;
+  font-weight: var(--font-weight-500);
+  background-image: url(../images/pattern-background-mobile.svg);
+  background-repeat: no-repeat;
+}
+
+@media screen and (min-width: 23.5em) {
+  body {
+    background-size: 100% auto;
+    background-position: center top;
+    background-image: url(../images/pattern-background-desktop.svg);
+  }
+}
+
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+.card {
+  text-align: center;
+  background-color: var(--neutral-color-100);
+  width: calc(100% - 4.8rem);
+  max-width: 45rem;
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: 0 0.1rem 2rem hsl(225 100% 85% / 0.8);
+}
+
+.card__content {
+  padding: var(--padding-card-content, 2.4rem);
+}
+
+.card__heading {
+  color: var(--neutral-color-400);
+  font-weight: var(--font-weight-900);
+  margin-bottom: 2.4rem;
+  font-size: clamp(2.2rem, 3.8vw + 1rem, 2.8rem);
+}
+
+.card__description {
+  color: var(--neutral-color-300);
+  line-height: 1.6;
+  margin-bottom: 2.4rem;
+  padding-inline: 0.5rem;
+}
+
+.card__plan {
+  text-align: left;
+  background-color: var(--neutral-color-200);
+  margin-bottom: 2.4rem;
+  padding: var(--padding-card-plan, 1.6rem);
+  border-radius: 1rem;
+}
+
+.plan-card {
+  display: grid;
+  column-gap: 1.6rem;
+  grid-template:
+    "icon time change" min-content
+    "icon price change" min-content / max-content 1fr max-content;
+}
+
+.plan-card__icon {
+  grid-area: icon;
+  place-self: center;
+}
+
+.plan-card__time {
+  grid-area: time;
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-700);
+  color: var(--neutral-color-400);
+}
+
+.plan-card__price {
+  grid-area: price;
+  font-size: 1.5rem;
+  color: var(--neutral-color-300);
+}
+
+.plan-card__change {
+  grid-area: change;
+  place-self: center;
+  font-size: 1.4rem;
+  font-weight: var(--font-weight-700);
+  color: var(--primary-color-200);
+}
+
+.plan-card__change:hover {
+  text-decoration: none;
+  color: hsl(var(--color-hover) / 0.8);
+}
+
+.card__cta {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.button {
+  text-decoration: none;
+  font-weight: var(--font-weight-700);
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.button--primary {
+  background-color: var(--primary-color-200);
+  color: var(--neutral-color-100);
+  box-shadow: 0 0.1rem 1rem var(--primary-color-200);
+}
+
+.button--primary:hover {
+  background-color: hsl(var(--color-hover) / 0.8);
+}
+
+.button--secondary {
+  color: var(--neutral-color-300);
+}
+
+.button--secondary:hover {
+  color: var(--neutral-color-400);
+}
+
+@media screen and (min-width: 28.125em) {
+  .card__content {
+    --padding-card-content: 5rem;
+  }
+  .card__plan {
+    --padding-card-plan: 2.5rem;
+  }
+}
